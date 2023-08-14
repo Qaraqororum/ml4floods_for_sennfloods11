@@ -11,7 +11,7 @@ class MAtentionNet(nn.Module):
 
         self.conv  = smp.MAnet(
             encoder_name="resnet34",        # choose encoder, e.g. mobilenet_v2 or efficientnet-b7
-            encoder_weights="imagenet"
+            encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,                      # model output channels (number of classes in your dataset)
             )
