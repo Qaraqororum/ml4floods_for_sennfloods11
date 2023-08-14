@@ -9,10 +9,10 @@ from ml4floods.models.utils import losses, metrics
 from ml4floods.models.architectures.baselines import SimpleLinear, SimpleCNN
 from ml4floods.models.architectures.unets import UNet, UNet_dropout
 from ml4floods.models.architectures.hrnet_seg import HighResolutionNet
+from ml4floods.models.architectures.extra_architectures import MAtentionNet
 from ml4floods.data.worldfloods.configs import COLORS_WORLDFLOODS, CHANNELS_CONFIGURATIONS, BANDS_S2, COLORS_WORLDFLOODS_INVLANDWATER, COLORS_WORLDFLOODS_INVCLEARCLOUD
 from pytorch_lightning.loggers import WandbLogger
 from ml4floods.data.utils import get_filesystem
-
 class WorldFloodsModel(pl.LightningModule):
     """
     Model to do multiclass classification.
@@ -347,6 +347,8 @@ def configure_architecture(h_params:AttrDict) -> torch.nn.Module:
             print("3-channel model. Loading pre-trained weights from ImageNet")
             pretrained_dict = load_weights(PATH_TO_MODEL_HRNET_SMALL)
             model.init_weights(pretrained_dict)
+    elif architecture == "matentionet":
+        model = MAtentionNet(input_channels=num_channels, output_channels=num_classes)
 
     else:
         raise Exception(f'No model implemented for model_type: {h_params.model_type}')
