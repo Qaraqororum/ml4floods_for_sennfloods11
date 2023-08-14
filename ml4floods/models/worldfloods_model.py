@@ -348,7 +348,7 @@ def configure_architecture(h_params:AttrDict) -> torch.nn.Module:
             pretrained_dict = load_weights(PATH_TO_MODEL_HRNET_SMALL)
             model.init_weights(pretrained_dict)
     elif architecture == "matentionet":
-        model = MAtentionNet(input_channels=num_channels, output_channels=num_classes)
+        model = MAtentionNet(num_channels, num_classes)
 
     else:
         raise Exception(f'No model implemented for model_type: {h_params.model_type}')
