@@ -23,7 +23,7 @@ class MAtentionNet(nn.Module):
         return res
 class pspnet(nn.Module):
     def __init__(self, n_channels, n_class):
-        super._init()
+        super()._init()
         self.conv = smp.PSPNet(
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
@@ -31,7 +31,7 @@ class pspnet(nn.Module):
         )
 class linknet(nn.Module):
     def __init__(self, n_channels, n_class):
-        super._init()
+        super()._init()
         self.conv = smp.Linknet(
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
