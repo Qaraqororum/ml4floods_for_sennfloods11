@@ -349,7 +349,10 @@ def configure_architecture(h_params:AttrDict) -> torch.nn.Module:
             model.init_weights(pretrained_dict)
     elif architecture == "matentionet":
         model = MAtentionNet(num_channels, num_classes)
-
+    elif architecture == "pspnet":
+        model = pspnet(num_channels, num_classes)
+    elif architecture == "linknet":
+        model = linknet(num_channels, num_classes)
     else:
         raise Exception(f'No model implemented for model_type: {h_params.model_type}')
 
