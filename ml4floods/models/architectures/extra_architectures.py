@@ -29,6 +29,10 @@ class pspnet(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class  
         )
+    def forward(self, x):
+        
+        res = self.conv(x)
+        return res
 class linknet(nn.Module):
     def __init__(self, n_channels, n_class):
         super().__init__()
@@ -37,3 +41,7 @@ class linknet(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class  
         )
+    def forward(self, x):
+        
+        res = self.conv(x)
+        return res
