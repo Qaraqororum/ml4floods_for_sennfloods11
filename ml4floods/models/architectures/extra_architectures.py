@@ -13,11 +13,7 @@ class MAtentionNet(nn.Module):
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
-            aux_params = {"dropout":1,
-                          "pooling":"avg",
-                          "classes":3,
-                         "activation":None}  # model output channels (number of classes in your dataset)
-            )
+
       
 
     def forward(self, x):
@@ -32,11 +28,7 @@ class pspnet(nn.Module):
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
-            aux_params = {"dropout":1,
-                          "pooling":"avg",
-                          "classes":3,
-                         "activation":None}
-        )
+
     def forward(self, x):
         
         res = self.conv(x)
@@ -48,11 +40,7 @@ class linknet(nn.Module):
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
-            aux_params = {"dropout":1,
-                          "pooling":"avg",
-                          "classes":3,
-                         "activation":None}
-        )
+
     def forward(self, x):
         
         res = self.conv(x)
@@ -65,11 +53,7 @@ class Unet_drop_extra(nn.Module):
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class ,
-            aux_params = {"dropout":1,
-                          "pooling":"avg",
-                          "classes":3,
-                         "activation":None}
-        )
+
     def forward(self, x):
         
         res = self.conv(x)
