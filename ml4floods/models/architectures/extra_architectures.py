@@ -12,7 +12,9 @@ class MAtentionNet(nn.Module):
         self.conv  = smp.MAnet(        # choose encoder, e.g. mobilenet_v2 or efficientnet-b7
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
-            classes=n_class                     # model output channels (number of classes in your dataset)
+            classes=n_class,
+            dropout = 1,
+            activation = "sigmoid"  # model output channels (number of classes in your dataset)
             )
       
 
@@ -27,7 +29,9 @@ class pspnet(nn.Module):
         self.conv = smp.PSPNet(
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
-            classes=n_class  
+            classes=n_class,
+            dropout = 1,
+            activation = "sigmoid"
         )
     def forward(self, x):
         
@@ -39,7 +43,24 @@ class linknet(nn.Module):
         self.conv = smp.Linknet(
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
-            classes=n_class  
+            classes=n_class,
+            dropout = 1,
+            activation = "sigmoid"
+        )
+    def forward(self, x):
+        
+        res = self.conv(x)
+        return res
+        
+class Unet_drop_extra(nn.Module):
+    def __init__(self, n_channels, n_class):
+        super().__init__()
+        self.conv = smp.Unet(
+            encoder_weights="imagenet",
+            in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
+            classes=n_class ,
+            dropout = 1,
+            activation = "sigmoid"
         )
     def forward(self, x):
         
