@@ -9,7 +9,7 @@ from ml4floods.models.utils import losses, metrics
 from ml4floods.models.architectures.baselines import SimpleLinear, SimpleCNN
 from ml4floods.models.architectures.unets import UNet, UNet_dropout
 from ml4floods.models.architectures.hrnet_seg import HighResolutionNet
-from ml4floods.models.architectures.extra_architectures import MAtentionNet, pspnet, linknet
+from ml4floods.models.architectures.extra_architectures import MAtentionNet, pspnet, linknet, Unet_drop_extra
 from ml4floods.data.worldfloods.configs import COLORS_WORLDFLOODS, CHANNELS_CONFIGURATIONS, BANDS_S2, COLORS_WORLDFLOODS_INVLANDWATER, COLORS_WORLDFLOODS_INVCLEARCLOUD
 from pytorch_lightning.loggers import WandbLogger
 from ml4floods.data.utils import get_filesystem
@@ -339,7 +339,7 @@ def configure_architecture(h_params:AttrDict) -> torch.nn.Module:
         model = SimpleLinear(num_channels, num_classes)
 
     elif architecture == 'unet_dropout':
-        model = UNet_dropout(num_channels, num_classes)
+        model = Unet_drop_extra(num_channels, num_classes)
 
     elif architecture == "hrnet_small":
         model = HighResolutionNet(input_channels=num_channels, output_channels=num_classes)
