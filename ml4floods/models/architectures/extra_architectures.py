@@ -15,7 +15,8 @@ class MAtentionNet(nn.Module):
             classes=n_class,
             aux_params = {"dropout":1,
                           "pooling":"avg",
-                          "classes":3}  # model output channels (number of classes in your dataset)
+                          "classes":3,
+                         "activation":None}  # model output channels (number of classes in your dataset)
             )
       
 
@@ -33,7 +34,8 @@ class pspnet(nn.Module):
             classes=n_class,
             aux_params = {"dropout":1,
                           "pooling":"avg",
-                          "classes":3}
+                          "classes":3,
+                         "activation":None}
         )
     def forward(self, x):
         
@@ -48,7 +50,8 @@ class linknet(nn.Module):
             classes=n_class,
             aux_params = {"dropout":1,
                           "pooling":"avg",
-                          "classes":3}
+                          "classes":3,
+                         "activation":None}
         )
     def forward(self, x):
         
@@ -64,7 +67,8 @@ class Unet_drop_extra(nn.Module):
             classes=n_class ,
             aux_params = {"dropout":1,
                           "pooling":"avg",
-                          "classes":3}
+                          "classes":3,
+                         "activation":None}
         )
     def forward(self, x):
         
