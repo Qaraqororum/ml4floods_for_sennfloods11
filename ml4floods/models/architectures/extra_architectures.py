@@ -14,6 +14,8 @@ class MAtentionNet(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
             aux_params = {"dropout":1,
+                          "pooling":"avg",
+                          "classes":3,
                             "activation":"sigmoid"}  # model output channels (number of classes in your dataset)
             )
       
@@ -31,6 +33,8 @@ class pspnet(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
             aux_params = {"dropout":1,
+                          "pooling":"avg",
+                          "classes":3,
                             "activation":"sigmoid"}
         )
     def forward(self, x):
@@ -45,6 +49,8 @@ class linknet(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class,
             aux_params = {"dropout":1,
+                          "pooling":"avg",
+                          "classes":3,
                             "activation":"sigmoid"}
         )
     def forward(self, x):
@@ -60,6 +66,8 @@ class Unet_drop_extra(nn.Module):
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class ,
             aux_params = {"dropout":1,
+                          "pooling":"avg",
+                          "classes":3,
                             "activation":"sigmoid"}
         )
     def forward(self, x):
