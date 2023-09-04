@@ -10,6 +10,7 @@ class MAtentionNet(nn.Module):
         super().__init__()
 
         self.conv  = smp.MAnet(        # choose encoder, e.g. mobilenet_v2 or efficientnet-b7
+            'resnet34',
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class)
@@ -25,6 +26,7 @@ class pspnet(nn.Module):
     def __init__(self, n_channels, n_class):
         super().__init__()
         self.conv = smp.PSPNet(
+            'resnet34',
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class)
@@ -37,6 +39,7 @@ class linknet(nn.Module):
     def __init__(self, n_channels, n_class):
         super().__init__()
         self.conv = smp.Linknet(
+            'resnet34',
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class)
@@ -50,6 +53,7 @@ class Unet_drop_extra(nn.Module):
     def __init__(self, n_channels, n_class):
         super().__init__()
         self.conv = smp.Unet(
+            'resnet34',
             encoder_weights="imagenet",
             in_channels=n_channels,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
             classes=n_class )
